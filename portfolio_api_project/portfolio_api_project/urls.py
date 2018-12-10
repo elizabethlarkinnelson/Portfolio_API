@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from API.resources import InvestmentResource
+from API.resources import InvestmentResource, UpdatesResource
 
 investment_resouce = InvestmentResource()
+updates_resource = UpdatesResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(investment_resouce.urls)),
+    path('api/', include(updates_resource.urls)),
 ]
