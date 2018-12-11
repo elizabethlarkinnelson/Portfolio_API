@@ -15,8 +15,8 @@ class InvestmentResource(ModelResource):
         }
         resource_name = 'investment'
         authorization = Authorization()
-        fields = ['company', 'quantity', 'cost']
-        excludes = ['id', 'date']
+        fields = ['company', 'quantity', 'cost', 'date']
+        excludes = ['id']
 
 
 class UpdatesResource(ModelResource):
@@ -29,11 +29,13 @@ class UpdatesResource(ModelResource):
         detail_allowed_methods = ['get', 'post']
         filtering = {
             'date': ALL,
+            'date_entered': ('lte',),
+            'investment_id': ALL
         }
         resource_name = 'updates'
         authorization = Authorization()
-        fields = ['quantity', 'cost', 'investment']
-        excludes = ['id', 'date']
+        fields = ['quantity', 'cost', 'investment', 'date']
+        excludes = ['id']
 
 #Finally got POST call to work to create updates
 # {
